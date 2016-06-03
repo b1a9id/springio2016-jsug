@@ -30,4 +30,9 @@ public class UserService {
 		user.setAge(request.getAge());
 		return userRepository.saveAndFlush(user);
 	}
+
+	public void deleteUser(Long id){
+		User user = userRepository.findByid(id);
+		userRepository.delete(user);
+	}
 }

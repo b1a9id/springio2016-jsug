@@ -24,12 +24,32 @@
   <script src="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.js"></script>
 </head>
 <body>
-  <table class="ui celled table">
+  <form method="post" th:action="@{/users}" th:object="${form}">
+    <table>
+      <tr>
+        <td>名前</td>
+        <td><input type="text" th:field="*{name}" placeholder="名前" /></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>年齢</td>
+        <td><input type="text" th:field="*{ageStart}" />〜<input type="text" th:field="*{ageEnd}" /></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button>検索</button></td>
+      </tr>
+    </table>
+  </form>
+  <hr />
+  <p th:if="${#lists.isEmpty(users)}" th:text="#{user.search.result.empty}">なし</p>
+  <table th:unless="${#lists.isEmpty(users)}" class="ui celled table">
     <thead>
       <tr>
         <th>名前</th>
         <th>メール</th>
         <th>年齢</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -38,7 +58,13 @@
         <td th:text="${user.name}">山田太郎</td>
         <td th:text="${user.email}">yamada@taro.co.jp</td>
         <td th:text="${user.age}">20</td>
-        <td><button th:value="${user.id}">削除</button></td>
+        <td><a th:href="@{/users/edit}"><button>編集</button></a></td>
+        <td>
+          <form method="post" th:action="@{/users/delete/{id}(id=${user.id})}">
+            <input type="hidden" name="_method" value="delete"/>
+            <button>削除</button>
+          </form>
+        </td>
       </tr>
     </tbody>
   </table>

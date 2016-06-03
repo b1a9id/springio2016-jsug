@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends UserRepositoryCustom, JpaRepository<User,Long> {
+
+	User findByid(Long id);
 }
