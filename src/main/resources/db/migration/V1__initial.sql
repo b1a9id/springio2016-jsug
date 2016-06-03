@@ -6,4 +6,7 @@ CREATE TABLE USER (
   PRIMARY KEY (id)
 );
 
-INSERT INTO USER (name, email, age) VALUES ('内立良介', 'uchitate@tagbangers.co.jp', '26');
+INSERT INTO USER (name, email, age) VALUES ('試験一郎', 'shiken@ichiro.co.jp', '44');
+INSERT INTO USER (name, email, age) VALUES ('試験二郎', 'shiken@jiro.co.jp', '26');
+INSERT INTO USER (name, email, age) VALUES ('試験三郎', 'shiken@saburo.co.jp', '12');
+INSERT INTO USER (name, email, age) VALUES ('試験太郎', 'shiken@taro.co.jp', '33');

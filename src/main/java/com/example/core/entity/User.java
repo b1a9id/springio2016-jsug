@@ -22,5 +22,5 @@ public class User implements Serializable {
 	@Column(length = 100, nullable = true)
 	private String email;
 
-	private String age;
+	private Integer age;
 }

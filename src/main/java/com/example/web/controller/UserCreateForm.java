@@ -1,5 +1,6 @@
 package com.example.web.controller;
 
+import com.example.core.model.UserCreateRequest;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
@@ -17,5 +18,13 @@ public class UserCreateForm implements Serializable {
 	@Email
 	private String email;
 
-	private int age;
+	private Integer age;
+
+	public UserCreateRequest toUserCreateRequest() {
+		UserCreateRequest request = new UserCreateRequest();
+		request.setName(getName());
+		request.setEmail(getEmail());
+		request.setAge(getAge());
+		return request;
+	}
 }

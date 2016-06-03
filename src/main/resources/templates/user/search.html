@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      color: gray;}
+    tr {
+      margin: 5px;
+    }
+    th {
+      color: white;
+      background: orange;
+    }
+    td {
+      color: black;
+      background: lightgray;
+    }
+  </style>
+
+  <title>ユーザ一覧</title>
+  <link rel="stylesheet" href="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.css"/>
+  <script src="/static/resources/lib/jquery.min.js"></script>
+  <script src="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.js"></script>
+</head>
+<body>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>メール</th>
+        <th>年齢</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.name}">山田太郎</td>
+        <td th:text="${user.email}">yamada@taro.co.jp</td>
+        <td th:text="${user.age}">20</td>
+        <td><button th:value="${user.id}">削除</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/users/new}"><button>登録</button></a>
+</body>
+</html>
