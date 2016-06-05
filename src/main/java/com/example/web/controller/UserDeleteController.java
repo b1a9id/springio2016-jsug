@@ -17,6 +17,6 @@ public class UserDeleteController {
 	@DeleteMapping
 	public String delete(@PathVariable Long id) {
 		userService.deleteUser(id);
-		return "redirect:/users";
+		return "redirect:/";
 	}
 }

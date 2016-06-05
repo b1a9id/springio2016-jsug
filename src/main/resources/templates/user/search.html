@@ -24,7 +24,7 @@
   <script src="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.js"></script>
 </head>
 <body>
-  <form method="post" th:action="@{/users}" th:object="${form}">
+  <form method="post" th:action="@{/}" th:object="${form}">
     <table>
       <tr>
         <td>名前</td>
@@ -58,7 +58,9 @@
         <td th:text="${user.name}">山田太郎</td>
         <td th:text="${user.email}">yamada@taro.co.jp</td>
         <td th:text="${user.age}">20</td>
-        <td><a th:href="@{/users/edit}"><button>編集</button></a></td>
+        <td>
+          <a th:href="@{/users/edit/{id}(id=${user.id})}"><button>編集</button></a>
+        </td>
         <td>
           <form method="post" th:action="@{/users/delete/{id}(id=${user.id})}">
             <input type="hidden" name="_method" value="delete"/>

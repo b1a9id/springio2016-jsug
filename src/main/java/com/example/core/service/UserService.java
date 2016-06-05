@@ -3,6 +3,7 @@ package com.example.core.service;
 import com.example.core.entity.User;
 import com.example.core.model.UserCreateRequest;
 import com.example.core.model.UserSearchRequest;
+import com.example.core.model.UserUpdateRequest;
 import com.example.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,24 @@ public class UserService {
 		return userRepository.search(request);
 	}
 
+	public User searchUser(long id) {
+		return userRepository.findByid(id);
+	}
+
 	public User createUser(UserCreateRequest request) {
 		User user = new User();
 		user.setName(request.getName());
 		user.setEmail(request.getEmail());
 		user.setAge(request.getAge());
+		return userRepository.saveAndFlush(user);
+	}
+
+	public User updateUser(UserUpdateRequest request, long id) {
+		User user = userRepository.findByid(id);
+		user.setName(request.getName());
+		user.setEmail(request.getEmail());
+		user.setAge(request.getAge());
+
 		return userRepository.saveAndFlush(user);
 	}
 
