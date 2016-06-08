@@ -25,7 +25,7 @@ public class UserService {
 	}
 
 	public User searchUser(long id) {
-		return userRepository.findByid(id);
+		return userRepository.findById(id);
 	}
 
 	public User createUser(UserCreateRequest request) {
@@ -37,7 +37,7 @@ public class UserService {
 	}
 
 	public User updateUser(UserUpdateRequest request, long id) {
-		User user = userRepository.findByid(id);
+		User user = userRepository.findById(id);
 		user.setName(request.getName());
 		user.setEmail(request.getEmail());
 		user.setAge(request.getAge());
@@ -46,7 +46,7 @@ public class UserService {
 	}
 
 	public void deleteUser(Long id){
-		User user = userRepository.findByid(id);
+		User user = userRepository.findById(id);
 		userRepository.delete(user);
 	}
 }
