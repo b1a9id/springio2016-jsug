@@ -34,25 +34,33 @@
 <body>
 <form method="post" th:action="@{/users/new}" th:object="${form}">
   <table class="ui celled table">
-    <thead>
     <tr>
       <th>名前</th>
-      <th>メール</th>
-      <th>年齢</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
       <td>
         <div th:classappend="${#fields.hasErrors('name')}? has-error">
           <input type="text" th:field="*{name}" placeholder="名前"/>
           <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
         </div>
       </td>
-      <td><input type="text" th:field="*{email}" placeholder="メール"/></td>
-      <td><input type="text" th:field="*{age}" placeholder="年齢"/></td>
     </tr>
-    </tbody>
+    <tr>
+      <th>メール</th>
+      <td>
+        <div>
+          <input type="text" th:field="*{email}" placeholder="メール"/>
+          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>年齢</th>
+      <td>
+        <div>
+          <input type="text" th:field="*{age}" placeholder="年齢"/>
+          <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+        </div>
+      </td>
+    </tr>
   </table>
   <button type="submit">登録</button>
 </form>
