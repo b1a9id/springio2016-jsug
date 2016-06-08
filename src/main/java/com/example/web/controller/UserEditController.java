@@ -29,7 +29,7 @@ public class UserEditController {
 	@GetMapping
 	public String input(Model model) {
 		User user = (User) model.asMap().get(TARGET_ENTITY_KEY);
-		UserEditForm form = (UserEditForm)  model.asMap().get(FORM_MODEL_KEY);
+		UserEditForm form = (UserEditForm) model.asMap().get(FORM_MODEL_KEY);
 		form = Optional.ofNullable(form).orElse(new UserEditForm(user));
 
 		model.addAttribute(FORM_MODEL_KEY, form);

@@ -28,9 +28,6 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 		if (request.getAgeStart() != null && request.getAgeEnd() != null) {
 			query.select(root).where(builder.between(root.get("age"), request.getAgeStart(), request.getAgeEnd()));
 		}
-		users = entityManager
-				.createQuery(query)
-				.getResultList();
-		return users;
+		return entityManager.createQuery(query).getResultList();
 	}
 }
