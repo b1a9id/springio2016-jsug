@@ -34,20 +34,45 @@
 <body>
 <form method="post" th:action="@{/users/edit/{id}(id=${user.id})}" th:object="${form}">
   <table class="ui celled table">
-    <thead>
     <tr>
       <th>名前</th>
-      <th>メール</th>
-      <th>年齢</th>
+      <td>
+        <div th:classappend="${#fields.hasErrors('name')}? has-error">
+          <input type="text" th:field="*{name}" placeholder="名前"/>
+          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+      </td>
     </tr>
-    </thead>
-    <tbody>
     <tr>
-      <td><input type="text" th:field="*{name}" placeholder="名前"/></td>
-      <td><input type="text" th:field="*{email}" placeholder="メール"/></td>
-      <td><input type="text" th:field="*{age}" placeholder="年齢"/></td>
+      <th>メール</th>
+      <td>
+        <div th:classappend="${#fields.hasErrors('email')}? has-error">
+          <input type="text" th:field="*{email}" placeholder="メール"/>
+          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+      </td>
     </tr>
-    </tbody>
+    <tr>
+      <th>年齢</th>
+      <td>
+        <div th:classappend="${#fields.hasErrors('age')}? has-error">
+          <input type="text" th:field="*{age}" placeholder="年齢"/>
+          <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>性別</th>
+      <td>
+        <div th:classappend="${#fields.hasErrors('gender')}? has-error">
+          <select th:field="*{gender}">
+            <option value="">性別を選択してください</option>
+            <option th:each="gender : ${genders}" th:text="#{|user.field.gender.${gender}|}" th:value="${gender}"></option>
+          </select>
+          <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+        </div>
+      </td>
+    </tr>
   </table>
   <button type="submit">更新</button>
 </form>

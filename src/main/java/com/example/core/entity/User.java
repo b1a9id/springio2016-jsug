@@ -2,6 +2,8 @@ package com.example.core.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +12,10 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class User implements Serializable {
+
+	public enum Gender {
+		MAN, WOMAN,
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +29,9 @@ public class User implements Serializable {
 	private String email;
 
 	private Integer age;
+
+	@Enumerated(EnumType.STRING)
+	@Column(length = 10, nullable = false)
+	@Field(analyze = Analyze.NO)
+	private Gender gender;
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +26,14 @@ public class UserEditController {
 		User user = userService.searchUser(id);
 		return user;
 	}
+
+	@ModelAttribute("genders")
+	public User.Gender[] setupGender() {
+		User.Gender[] genders = User.Gender.values();
+//		return Arrays.copyOfRange(genders, 0, genders.length);
+		return genders;
+	}
+
 
 	@GetMapping
 	public String input(Model model) {

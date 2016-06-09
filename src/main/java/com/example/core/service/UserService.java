@@ -33,6 +33,7 @@ public class UserService {
 		user.setName(request.getName());
 		user.setEmail(request.getEmail());
 		user.setAge(request.getAge());
+		user.setGender(request.getGender());
 		return userRepository.saveAndFlush(user);
 	}
 
@@ -41,6 +42,7 @@ public class UserService {
 		user.setName(request.getName());
 		user.setEmail(request.getEmail());
 		user.setAge(request.getAge());
+		user.setGender(request.getGender());
 
 		return userRepository.saveAndFlush(user);
 	}
