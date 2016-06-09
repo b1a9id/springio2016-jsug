@@ -36,6 +36,16 @@
         <td><input type="text" th:field="*{ageStart}" />〜<input type="text" th:field="*{ageEnd}" /></td>
       </tr>
       <tr>
+        <td>年齢</td>
+        <td>
+          <select th:field="*{gender}">
+            <option value="">性別を選択してください</option>
+            <option th:each="gender : ${genders}" th:text="#{|user.field.gender.${gender}|}" th:value="${gender}"></option>
+          </select>
+          <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+        </td>
+      </tr>
+      <tr>
         <td></td>
         <td><button>検索</button></td>
       </tr>
@@ -49,6 +59,7 @@
         <th>名前</th>
         <th>メール</th>
         <th>年齢</th>
+        <th>性別</th>
         <th></th>
         <th></th>
       </tr>
@@ -58,6 +69,7 @@
         <td th:text="${user.name}">山田太郎</td>
         <td th:text="${user.email}">yamada@taro.co.jp</td>
         <td th:text="${user.age}">20</td>
+        <td th:text="#{|user.field.gender.${user.gender}|}">男性</td>
         <td>
           <a th:href="@{/users/edit/{id}(id=${user.id})}"><button>編集</button></a>
         </td>

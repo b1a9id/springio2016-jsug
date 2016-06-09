@@ -21,6 +21,9 @@ public class UserEditForm implements Serializable {
 
 	private Integer age;
 
+	@NotNull
+	private User.Gender gender;
+
 	public UserEditForm() {
 	}
 
@@ -28,6 +31,7 @@ public class UserEditForm implements Serializable {
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.age = user.getAge();
+		this.gender = user.getGender();
 	}
 
 	public UserUpdateRequest toUserUpdateRequest() {
@@ -35,6 +39,7 @@ public class UserEditForm implements Serializable {
 		request.setName(getName());
 		request.setEmail(getEmail());
 		request.setAge(getAge());
+		request.setGender(getGender());
 		return request;
 	}
 }

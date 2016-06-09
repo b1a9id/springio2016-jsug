@@ -27,6 +27,13 @@ public class UserSearchController {
 		return new UserSearchForm();
 	}
 
+	@ModelAttribute("genders")
+	public User.Gender[] setupGender() {
+		User.Gender[] genders = User.Gender.values();
+//		return Arrays.copyOfRange(genders, 0, genders.length);
+		return genders;
+	}
+
 	@GetMapping
 	public String index(Model model) {
 		List<User> users = userService.allUsers();

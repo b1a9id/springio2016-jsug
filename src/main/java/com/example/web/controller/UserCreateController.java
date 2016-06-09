@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Arrays;
+
 @Controller
 @RequestMapping("/users/new")
 public class UserCreateController {
@@ -27,6 +29,12 @@ public class UserCreateController {
 	@ModelAttribute(FORM_MODEL_KEY)
 	public UserCreateForm setupUserCreateForm() {
 		return new UserCreateForm();
+	}
+
+	@ModelAttribute("genders")
+	public User.Gender[] setupGender() {
+		User.Gender[] genders = User.Gender.values();
+		return Arrays.copyOfRange(genders, 0, genders.length);
 	}
 
 	@GetMapping

@@ -1,5 +1,6 @@
 package com.example.core.model;
 
+import com.example.core.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,4 +15,6 @@ public class UserSearchRequest implements Serializable {
 	private Integer ageStart;
 
 	private Integer ageEnd;
+
+	private User.Gender gender;
 }

@@ -1,5 +1,6 @@
 package com.example.web.controller;
 
+import com.example.core.entity.User;
 import com.example.core.model.UserCreateRequest;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,11 +22,14 @@ public class UserCreateForm implements Serializable {
 
 	private Integer age;
 
+	private User.Gender gender;
+
 	public UserCreateRequest toUserCreateRequest() {
 		UserCreateRequest request = new UserCreateRequest();
 		request.setName(getName());
 		request.setEmail(getEmail());
 		request.setAge(getAge());
+		request.setGender(getGender());
 		return request;
 	}
 }
