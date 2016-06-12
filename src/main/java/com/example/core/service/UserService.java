@@ -47,8 +47,9 @@ public class UserService {
 		return userRepository.saveAndFlush(user);
 	}
 
-	public void deleteUser(Long id){
+	public String deleteUser(Long id){
 		User user = userRepository.findById(id);
 		userRepository.delete(user);
+		return user.getName();
 	}
 }

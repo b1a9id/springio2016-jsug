@@ -55,7 +55,9 @@ public class UserCreateController {
 			return "redirect:/users/new?error";
 		}
 		User savedUser = userService.createUser(form.toUserCreateRequest());
+		redirectAttributes.getFlashAttributes().clear();
+		redirectAttributes.addFlashAttribute("savedUser", savedUser);
 
-		return "redirect:/";
+		return "redirect:/users";
 	}
 }
