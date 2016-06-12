@@ -13,18 +13,18 @@ public class UserSearchForm implements Serializable {
 
 	private String name;
 
-	private Integer ageStart;
-
-	private Integer ageEnd;
-
-	private User.Gender gender;
+//	private Integer ageStart;
+//
+//	private Integer ageEnd;
+//
+//	private User.Gender gender;
 
 	public UserSearchRequest toUserSearchRequest() {
 		UserSearchRequest request = new UserSearchRequest();
 		request.setName(getName());
-		request.setAgeStart(getAgeStart());
-		request.setAgeEnd(getAgeEnd());
-		request.setGender(getGender());
+//		request.setAgeStart(getAgeStart());
+//		request.setAgeEnd(getAgeEnd());
+//		request.setGender(getGender());
 		return request;
 	}
 }

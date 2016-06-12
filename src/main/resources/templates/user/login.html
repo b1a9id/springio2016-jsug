@@ -1,0 +1,80 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <title>enRoute ポータルサイト</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/Semantic-UI/2.1.8/semantic.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}"/>
+
+    <link rel="stylesheet" th:href="@{/resources/css/login.css}"/>
+
+    <script th:src="@{/webjars/jquery/2.2.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/Semantic-UI/2.1.8/semantic.min.js}"></script>
+    <script th:src="@{/resources/lib/jquery.sliphover.min.js}"></script>
+
+    <script th:src="@{/resources/js/login.js}"></script>
+
+    <!--/*/ <th:block th:remove="all"> /*/-->
+    <link rel="stylesheet" href="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.css"/>
+    <link rel="stylesheet" href="/static/resources/css/style.css"/>
+    <link rel="stylesheet" href="/static/resources/css/login.css"/>
+    <script src="/static/resources/lib/jquery.min.js"></script>
+    <script src="/static/resources/lib/Semantic-UI/2.1.8/semantic.min.js"></script>
+    <script src="/static/resources/lib/jquery.sliphover.min.js"></script>
+    <script src="/static/resources/js/script.js"></script>
+    <!--/*/ </th:block> /*/-->
+</head>
+
+<body>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="logo">
+            <img th:src="@{/resources/img/enroute_logo_clear.png}" src="/static/resources/img/enroute_logo_clear.png" alt=""/>
+        </div>
+        <h2 class="ui black image header">
+            <div class="content">
+                管理者サイト ログイン
+            </div>
+        </h2>
+        <div class="ui success message" th:if="${passwordReset}">
+            パスワードを更新しました。
+        </div>
+        <div class="ui error message" th:if="${failed}">
+            ログインできませんでした。
+        </div>
+        <div class="ui error message" th:if="${locked}">
+            アカウントがロックされています。
+        </div>
+        <form class="ui large form" th:action="@{/login}" method="post">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="building icon"></i>
+                        <input type="text" name="client" th:value="${''}" placeholder="顧客コード"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" th:value="${''}" placeholder="ログインID"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="privacy icon"></i>
+                        <input type="password" name="password" th:value="${''}" placeholder="パスワード"/>
+                    </div>
+                </div>
+                <div class="ui fluid large primary submit button reset-button">ログイン</div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+        <div class="ui message">
+            <a class="forget" th:href="@{/password-reset}" href="/templates/admin/password-reset/reset1-entry.html"><i class="help circle icon"></i> パスワードを忘れた方はこちら</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
