@@ -1,8 +1,10 @@
 package com.example.web.controller;
 
 import com.example.core.entity.User;
+import com.example.core.service.LoginUserDetails;
 import com.example.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,7 +50,8 @@ public class UserCreateController {
 	public String save(
 			@Validated @ModelAttribute(FORM_MODEL_KEY) UserCreateForm form,
 			BindingResult errors,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,
+			@AuthenticationPrincipal LoginUserDetails userDetails) {
 		redirectAttributes.addFlashAttribute(FORM_MODEL_KEY, form);
 		redirectAttributes.addFlashAttribute(ERRORS_MODEL_KEYS, errors);
 		if (errors.hasErrors()) {
