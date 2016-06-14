@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		@Autowired
 		UserDetailsService userDetailsService;
 
+		// パスワードをハッシュ化
 		@Bean
 		PasswordEncoder passwordEncoder() {
 			return new StandardPasswordEncoder();
