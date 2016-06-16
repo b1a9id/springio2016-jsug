@@ -1,3 +1,3 @@
 ALTER TABLE USER ADD password VARCHAR(500) after name;
-UPDATE USER SET password = 'uchitate';
+UPDATE USER SET password = 'a45ff616169c7ff6337d928da2570c5005c54e4dea1165ec6f8940810aeaffb28d086f141d157fa9';
 ALTER TABLE USER modify password VARCHAR(500) NOT NULL;
