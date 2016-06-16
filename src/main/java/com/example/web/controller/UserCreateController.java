@@ -50,8 +50,7 @@ public class UserCreateController {
 	public String save(
 			@Validated @ModelAttribute(FORM_MODEL_KEY) UserCreateForm form,
 			BindingResult errors,
-			RedirectAttributes redirectAttributes,
-			@AuthenticationPrincipal LoginUserDetails userDetails) {
+			RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute(FORM_MODEL_KEY, form);
 		redirectAttributes.addFlashAttribute(ERRORS_MODEL_KEYS, errors);
 		if (errors.hasErrors()) {
