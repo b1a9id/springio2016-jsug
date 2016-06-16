@@ -5,6 +5,7 @@ import com.example.core.model.UserUpdateRequest;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @Setter
 public class UserEditForm implements Serializable {
 
-	@NotNull
+	@NotEmpty
 	private String name;
 
 	@Email
