@@ -6,6 +6,7 @@ import com.example.core.model.UserSearchRequest;
 import com.example.core.model.UserUpdateRequest;
 import com.example.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	public List<User> allUsers() {
 		return userRepository.findAll();
@@ -31,6 +35,7 @@ public class UserService {
 	public User createUser(UserCreateRequest request) {
 		User user = new User();
 		user.setName(request.getName());
+		user.setPassword(passwordEncoder.encode(request.getPassword()));
 		user.setEmail(request.getEmail());
 		user.setAge(request.getAge());
 		user.setGender(request.getGender());

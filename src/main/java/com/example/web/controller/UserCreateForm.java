@@ -17,6 +17,9 @@ public class UserCreateForm implements Serializable {
 	@NotEmpty
 	private String name;
 
+	@NotNull
+	private String password;
+
 	@Email
 	private String email;
 
@@ -27,6 +30,7 @@ public class UserCreateForm implements Serializable {
 	public UserCreateRequest toUserCreateRequest() {
 		UserCreateRequest request = new UserCreateRequest();
 		request.setName(getName());
+		request.setPassword(getPassword());
 		request.setEmail(getEmail());
 		request.setAge(getAge());
 		request.setGender(getGender());
