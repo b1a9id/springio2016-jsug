@@ -18,6 +18,9 @@
 </head>
 <body>
 <div class="ui text container">
+  <div colspan="4">
+    <a th:href="@{/logout}"><div class="ui right floated small red labeled icon button"><i class="sign out icon"></i>ログアウト</div></a>
+  </div>
   <h2 class="ui header aligned blue">新規登録</h2>
   <form class="ui horizontal form" method="post" th:action="@{/users/new}" th:object="${form}">
     <div class="field" th:classappend="${#fields.hasErrors('name')}? has-error">
@@ -26,6 +29,13 @@
         <input type="text" th:field="*{name}" name="" placeholder="名前" />
       </div>
       <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">エラーメッセージ</p>
+    </div>
+    <div class="field" th:classappend="${#fields.hasErrors('password')}? has-error">
+      <label class="ui blue header"><i class="lock icon"></i>パスワード</label>
+      <div class="ui input" th:classappend="${#fields.hasErrors('password')}? 'error'">
+        <input type="text" th:field="*{password}" name="" placeholder="パスワード" />
+      </div>
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">エラーメッセージ</p>
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('email')}? has-error">
       <label class="ui blue header"><i class="mail icon"></i>メール</label>
