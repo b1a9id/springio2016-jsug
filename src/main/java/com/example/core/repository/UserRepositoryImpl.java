@@ -1,12 +1,15 @@
 package com.example.core.repository;
 
 import com.example.core.entity.User;
+import com.example.core.entity.User_;
 import com.example.core.model.UserSearchRequest;
-import org.hibernate.search.query.dsl.BooleanJunction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +25,18 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 
+		List<Predicate> where = new ArrayList<>();
 		if (request.getName() != null) {
-			query.select(root).where(builder.like(root.get("name"), "%" + request.getName() + "%"));
+			where.add(builder.equal(root.get(User_.name), request.getName()));
 		}
 		if (request.getAgeStart() != null && request.getAgeEnd() != null) {
-			query.select(root).where(builder.between(root.get("age"), request.getAgeStart(), request.getAgeEnd()));
+			where.add(builder.between(root.get(User_.age), request.getAgeStart(), request.getAgeEnd()));
 		}
 		if (request.getGender() != null) {
-			query.select(root).where(builder.equal(root.get("gender"), request.getGender()));
+			where.add(builder.equal(root.get(User_.gender), request.getGender()));
 		}
+
+		query.where(where.toArray(new Predicate[where.size()]));
 
 		return entityManager.createQuery(query).getResultList();
 	}
