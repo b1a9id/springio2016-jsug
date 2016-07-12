@@ -26,6 +26,12 @@
       <div class="ui icon input small">
         <input class="prompt" th:field="*{name}" type="text" placeholder="名前を入力"/>
       </div>
+      <div class="ui icon input small">
+        <select class="ui search dropdown" th:field="*{gender}">
+          <option value="">性別を選択</option>
+          <option th:each="gender : ${genders}" th:text="#{|user.field.gender.${gender}|}" th:value="${gender}"></option>
+        </select>
+      </div>
       <button class="ui small button">検索</button>
     </div>
   </form>
