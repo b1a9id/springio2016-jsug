@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -33,16 +32,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/login").permitAll()
-				.anyRequest().authenticated();
-		http.formLogin().loginProcessingUrl("/login")
+				.anyRequest().authenticated()
+				.and()
+				.formLogin().loginProcessingUrl("/login")
 				.loginPage("/login")
 				.failureUrl("/login?error")
 				.defaultSuccessUrl("/users", true)
 				.usernameParameter("username")
-				.passwordParameter("password");
-		http.logout()
+				.passwordParameter("password")
+				.and()
+				.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
-				.logoutSuccessUrl("/login");
+				.logoutSuccessUrl("/login")
+				.and()
+				.csrf().disable();
 	}
 
 	@Configuration
