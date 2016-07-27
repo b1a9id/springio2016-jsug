@@ -4,23 +4,20 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.FieldBridge;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@NamedEntityGraph
 @Getter
 @Setter
-public class User implements Serializable {
+public class User extends AbstractEntity<Long> {
 
 	public enum Gender {
 		MAN, WOMAN,
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
-	private Long id;
 
 	@Column(length = 100, nullable = false)
 	private String name;
