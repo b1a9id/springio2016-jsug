@@ -1,4 +1,4 @@
-package com.example.web.controller;
+package com.example.web.controller.user;
 
 import com.example.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

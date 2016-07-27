@@ -1,4 +1,4 @@
-package com.example.web.controller;
+package com.example.web.controller.user;
 
 import com.example.core.entity.User;
 import com.example.core.model.UserUpdateRequest;
