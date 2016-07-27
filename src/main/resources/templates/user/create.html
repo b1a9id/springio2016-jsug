@@ -33,7 +33,7 @@
     <div class="field" th:classappend="${#fields.hasErrors('password')}? has-error">
       <label class="ui blue header"><i class="lock icon"></i>パスワード</label>
       <div class="ui input" th:classappend="${#fields.hasErrors('password')}? 'error'">
-        <input type="text" th:field="*{password}" name="" placeholder="パスワード" />
+        <input type="password" th:field="*{password}" name="" placeholder="パスワード" />
       </div>
       <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">エラーメッセージ</p>
     </div>

@@ -5,18 +5,18 @@ import com.example.core.model.UserCreateRequest;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Getter
 @Setter
 public class UserCreateForm implements Serializable {
 
-	@NotEmpty
+	@NotNull
 	private String name;
 
-	@NotEmpty
+	@NotNull
 	private String password;
 
 	@Email

@@ -3,6 +3,7 @@ package com.example.core.repository;
 import com.example.core.entity.User;
 import com.example.core.entity.User_;
 import com.example.core.model.UserSearchRequest;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,7 +27,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 		Root<User> root = query.from(User.class);
 
 		List<Predicate> where = new ArrayList<>();
-		if (request.getName() != null) {
+		if (StringUtils.hasText(request.getName())) {
 			where.add(builder.equal(root.get(User_.name), request.getName()));
 		}
 		if (request.getAgeStart() != null && request.getAgeEnd() != null) {
