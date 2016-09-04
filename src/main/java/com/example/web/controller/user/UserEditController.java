@@ -57,6 +57,9 @@ public class UserEditController {
 			RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute(FORM_MODEL_KEY, form);
 		redirectAttributes.addFlashAttribute(ERRORS_MODEL_KEYS, errors);
+		if (form.getGender() == null) {
+			errors.rejectValue("gender", "NotNull");
+		}
 		if (errors.hasErrors()) {
 			return "redirect:/users/new?error";
 		}
